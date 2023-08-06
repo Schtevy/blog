@@ -10,9 +10,11 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = os.environ['DJANGO_SECRET_KEY']
 DEBUG = os.environ['DJANGO_DEBUG_MODE']
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['.ngrok.io',
+                 '127.0.0.1']
 
 INSTALLED_APPS = [
+    'about.apps.AboutConfig',
     'blog.apps.BlogConfig',
     'django.contrib.admin',
     'django.contrib.auth',
@@ -20,6 +22,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.postgres',
     # 'django.contrib.sitemaps',
 ]
 
@@ -66,7 +69,7 @@ DATABASES = {
         'USER': os.environ['DATABASE_USER'],
         'PASSWORD': os.environ['DATABASE_USER_PASSWORD'],
         'OPTIONS': {
-            'connect_timeout': 3,
+            'connect_timeout': 5,
             # "assume_role": "my_application_role",
         }
     }
