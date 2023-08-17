@@ -1,17 +1,17 @@
 from django.db import models
 
 class Author(models.Model):
+    nickname = models.CharField(max_length=50, primary_key=True)
     email = models.CharField(max_length=50)
-    nickname = models.CharField(max_length=50)
 
     class Meta:
         ordering = ["nickname"]
-        verbose_name_plural = "Author"
+        verbose_name_plural = "Authors"
 
     def __str__(self):
         return self.nickname
 
-class Article(models.Model):
+class BlogPost(models.Model):
     authors = models.ManyToManyField(Author)
 
     title = models.CharField(max_length=25)
@@ -22,7 +22,7 @@ class Article(models.Model):
 
     class Meta:
         ordering = ["mod_date"]
-        verbose_name_plural = "Article"
+        verbose_name_plural = "Blog Posts"
 
     def __str__(self):
         return self.title   

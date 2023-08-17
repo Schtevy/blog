@@ -1,0 +1,11 @@
+<h1>Authors</h1>
+
+{% if authors %}
+    <ul>
+    {% for author in authors %}
+        <li>{{ author.nickname }} ({{ author.email }})</li>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>No author available.</p>
+{% endif %}
